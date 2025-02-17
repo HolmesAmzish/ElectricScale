@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow_pay</class>
+ <widget class="QMainWindow" name="MainWindow_pay">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>430</width>
+    <height>522</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>二维码付款</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton_pay_ok">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>420</y>
+      <width>211</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>付款成功</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_showqrcode">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>300</y>
+      <width>111</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget_view_2">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>10</y>
+      <width>271</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>160</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>类别</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Adobe Heiti Std</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>名称</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Adobe Heiti Std</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>重量(g)</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Adobe Heiti Std</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>单价(元/kg)</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Adobe Heiti Std</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>总价(元)</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Adobe Heiti Std</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>包装日期</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Adobe Heiti Std</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="font">
+      <font>
+       <family>Adobe Heiti Std</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="textAlignment">
+      <set>AlignCenter</set>
+     </property>
+     <property name="background">
+      <color>
+       <red>208</red>
+       <green>255</green>
+       <blue>253</blue>
+      </color>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

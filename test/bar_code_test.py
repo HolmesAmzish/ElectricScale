@@ -1,1 +1,0 @@
-from barcode import Code128

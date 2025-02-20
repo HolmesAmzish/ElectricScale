@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'print_bar_code.ui'
+# Form implementation generated from reading view file 'print_bar_code.view'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #

@@ -10,6 +10,11 @@ from tqdm import tqdm
 import warnings
 warnings.filterwarnings("ignore")
 
+"""
+File: models/train_model.py
+Date: 2025-02-18
+Author: QIU, SHENG
+"""
 
 def train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)

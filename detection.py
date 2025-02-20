@@ -5,6 +5,11 @@ from torch import nn
 from torchvision import transforms, models
 from PIL import Image
 
+"""
+File: detection.py
+Date: 2025-02-20
+Author: SHENG
+"""
 
 model = torch.load("models/model.pth", weights_only=False)
 model.eval()

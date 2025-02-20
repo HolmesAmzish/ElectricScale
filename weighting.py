@@ -2,6 +2,11 @@ import threading
 import time
 import RPi.GPIO as GPIO
 
+"""
+File: weighting.py
+Date: 2025-02-16
+Author: LUO, SHENG
+"""
 
 class Hx711(threading.Thread):
     def __init__(self):

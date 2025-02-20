@@ -5,6 +5,13 @@ from torchvision import transforms, models
 from PIL import Image
 import numpy as np
 
+"""
+File: test/opencv_with_pytorch.py
+Date: 2025-02-18
+Author: SHENG
+"""
+
+
 model = torch.load("../models/model.pth", weights_only=False)
 model.eval()
 

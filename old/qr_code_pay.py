@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qr_code_pay.ui'
+# Form implementation generated from reading view file 'qr_code_pay.view'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #

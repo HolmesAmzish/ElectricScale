@@ -6,6 +6,7 @@ from PyQt6.QtGui import QImage, QPixmap
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from cart import Item
 import detection
+import class_dict
 
 
 CAP_FREQ = 30
@@ -19,7 +20,7 @@ class MainWindow(QMainWindow):
         uic.loadUi('ui/main.ui', self)
 
         # Initialize the camera with cv
-        self.capture = cv2.VideoCapture(0)
+        self.capture = cv2.VideoCapture(1)
         if not self.capture.isOpened():
             print("Cannot open camera")
             sys.exit()
@@ -40,11 +41,16 @@ class MainWindow(QMainWindow):
         ret, frame = self.capture.read()
         if ret:
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+            # Detect the class of object and mark
+            class_idx = detection.classify_by_image(frame_rgb)
+            predicted_label = class_dict.class_names[class_idx]
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            cv2.putText(frame_rgb, f'Predicted: {predicted_label}', (10, 30), font, 1, (0,255, 0), 2)
+
             height, width, channels = frame_rgb.shape
             bytes_per_line = channels * width
-
             qimg = QImage(frame_rgb.data, width, height, bytes_per_line, QImage.Format.Format_RGB888)
-
             self.video_label.setPixmap(QPixmap.fromImage(qimg))
 
     def closeEvent(self, event):

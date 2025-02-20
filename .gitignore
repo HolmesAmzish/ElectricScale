@@ -1,5 +1,4 @@
 models/dataset/
-test/
 
 *.pth
 *.h5

@@ -9,16 +9,25 @@ from PIL import Image
 model = torch.load("models/model.pth", weights_only=False)
 model.eval()
 # print(model)
-class_names = [
-    'apple', 'banana', 'beetroot', 'bell pepper', 'cabbage', 'capsicum', 'carrot',
-    'cauliflower', 'chilli pepper', 'corn', 'cucumber', 'eggplant', 'garlic', 'ginger',
-    'grapes', 'jalepeno', 'kiwi', 'lemon', 'lettuce', 'mango', 'onion', 'orange',
-    'paprika', 'pear', 'peas', 'pineapple', 'pomegranate', 'potato', 'raddish',
-    'soy beans', 'spinach', 'sweetcorn', 'sweetpotato', 'tomato', 'turnip', 'watermelon'
-]
 
 transform = transforms.Compose([
     transforms.Resize((128, 128)),
     transforms.ToTensor(),
     transforms.Normalize(0, 1)
 ])
+
+
+def classify_by_image(frame_rgb):
+    """
+    :param frame_rgb:
+    :return: class_idx: classification index result of input image
+    """
+    frame_rgb = Image.fromarray(frame_rgb)
+    frame_tensor = transform(frame_rgb).unsqueeze(0)
+
+    with torch.no_grad():
+        output = model(frame_tensor)
+        _, predicted = torch.max(output, 1)
+
+    class_idx = predicted.item()
+    return class_idx

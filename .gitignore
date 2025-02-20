@@ -1,0 +1,7 @@
+models/dataset/
+test/
+
+*.pth
+*.h5
+*.jpg
+*.mp4

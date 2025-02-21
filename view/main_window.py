@@ -5,7 +5,6 @@ from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QImage, QPixmap
 from PyQt6.QtWidgets import QMainWindow, QTableWidgetItem
 from view.select_window import SelectWindow
-from cart import Item
 import detection
 import class_dict
 
@@ -15,8 +14,8 @@ Date: 2025-02-20
 Author: SHENG
 """
 
-CAP_FREQ = 30
-
+CAP_FREQ = 30   # Set camera to 30 FPS
+weight = 5      # TODO: pi weighting module
 
 class MainWindow(QMainWindow):
     item_list = []
@@ -40,8 +39,8 @@ class MainWindow(QMainWindow):
     # VIDEO MODULE
     def update_frame(self):
         """
-        video label
-        Return frames cv2 camera captured
+        Return frame cv captured and send frames to model,
+        update predicted label every frame.
         """
         ret, frame = self.capture.read()
         if ret:
@@ -51,7 +50,15 @@ class MainWindow(QMainWindow):
             class_idx = detection.classify_by_image(frame_rgb)
             predicted_label = class_dict.class_names[class_idx]
             font = cv2.FONT_HERSHEY_SIMPLEX
-            cv2.putText(frame_rgb, f'Predicted: {predicted_label}', (10, 30), font, 1, (0,255, 0), 2)
+            cv2.putText(
+                frame_rgb, f'Predicted: {predicted_label}',
+                (10, 30), font, 1, (0, 255, 0), 2
+            )
+
+            self.information_table.setItem(0, 0, QTableWidgetItem(class_dict.class_names_cn[class_idx]))
+            self.information_table.setItem(1, 0, QTableWidgetItem(str(class_dict.class_prices[class_idx])))
+            self.information_table.setItem(2, 0, QTableWidgetItem(str(weight)))
+            self.information_table.setItem(3, 0, QTableWidgetItem(str(weight * class_dict.class_prices[class_idx])))
 
             height, width, channels = frame_rgb.shape
             bytes_per_line = channels * width
@@ -84,6 +91,7 @@ class MainWindow(QMainWindow):
         self.update_total_price()
 
     def update_total_price(self):
+
         total_price = sum(item.price for item in self.item_list)
         self.total_price_label.setText(f"总金额：{total_price:.2f}￥")
 

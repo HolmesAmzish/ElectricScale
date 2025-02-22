@@ -1,8 +1,5 @@
-import cv2
-import numpy as np
 import torch
-from torch import nn
-from torchvision import transforms, models
+from torchvision import transforms
 from PIL import Image
 
 """

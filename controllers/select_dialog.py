@@ -5,7 +5,7 @@ import class_dict
 from cart import Item
 
 """
-File: view/select_window.py
+File: view/select_dialog.py
 Date: 2025-02-20
 Author: SHENG
 """

@@ -11,8 +11,3 @@ class Item:
         self.weight = weight
         self.unit_price = unit_price
         self.price = price
-
-
-# def calculate_total_price(items):
-#     """Calculate the total price for Items"""
-#     return sum(item.price for item in items)

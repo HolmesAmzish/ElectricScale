@@ -4,10 +4,10 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms, models
-from matplotlib import pyplot as plt
-from matplotlib import ticker
 from tqdm import tqdm
 import warnings
+import class_dict
+
 warnings.filterwarnings("ignore")
 
 """
@@ -15,6 +15,7 @@ File: models/train_model.py
 Date: 2025-02-18
 Author: QIU, SHENG
 """
+
 
 def train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
@@ -93,6 +94,7 @@ if __name__ == '__main__':
     model.to(device)
 
     if not os.path.exists('./model.pth'):
+        """Train model if not exists"""
         optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
         scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.8)
     
@@ -110,27 +112,23 @@ if __name__ == '__main__':
         torch.save(model, "model.pth")
         print('Done')
     else:
+        """Test trained model"""
         model = torch.load("model.pth", weights_only=False)
         print(model)
-    #     model.eval()
-    #
-    # class_names = ['apple', 'banana', 'beetroot', 'bell pepper', 'cabbage', 'capsicum', 'carrot', 'cauliflower',
-    #                'chilli pepper', 'corn', 'cucumber', 'eggplant', 'garlic', 'ginger', 'grapes', 'jalepeno', 'kiwi',
-    #                'lemon', 'lettuce', 'mango', 'onion', 'orange', 'paprika', 'pear', 'peas', 'pineapple',
-    #                'pomegranate', 'potato', 'raddish', 'soy beans', 'spinach', 'sweetcorn', 'sweetpotato', 'tomato',
-    #                'turnip', 'watermelon']
-    #
-    # correct_prediction = 0
-    #
-    # for sample_image, true_label in test_data:
-    #     image_rgb = sample_image.permute(1, 2, 0).numpy()
-    #     image_rgb = np.clip(image_rgb, 0, 1)
-    #     predicted_label = torch.argmax(model(sample_image.unsqueeze(0)))
-    #
-    #     print(f"Predicted label: {predicted_label}, True label: {true_label}")
-    #
-    #     if predicted_label == true_label:
-    #         correct_prediction += 1
-    #
-    # accuracy = 100 * correct_prediction / len(test_data)
-    # print(f"Accuracy: {accuracy}%")
+        model.eval()
+
+    correct_prediction = 0
+
+    for sample_image, true_label in test_data:
+        image_rgb = sample_image.permute(1, 2, 0).numpy()
+        image_rgb = np.clip(image_rgb, 0, 1)
+        predicted_label = torch.argmax(model(sample_image.unsqueeze(0)))
+
+        print(f"Predicted label: {class_dict.class_names[predicted_label]},"
+              f"True label: {class_dict.class_names[true_label]}")
+
+        if predicted_label == true_label:
+            correct_prediction += 1
+
+    accuracy = 100 * correct_prediction / len(test_data)
+    print(f"Accuracy: {accuracy}%")

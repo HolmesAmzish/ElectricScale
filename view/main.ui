@@ -37,7 +37,7 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
      <item>
-      <widget class="QPushButton" name="print_qrcode_btn">
+      <widget class="QPushButton" name="pay_btn">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -50,12 +50,12 @@
         </font>
        </property>
        <property name="text">
-        <string>打印二维码</string>
+        <string>付款</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="print_barcode_btn">
+      <widget class="QPushButton" name="cancel_alarm_btn">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -68,7 +68,7 @@
         </font>
        </property>
        <property name="text">
-        <string>打印条形码</string>
+        <string>取消警报</string>
        </property>
       </widget>
      </item>
@@ -261,7 +261,7 @@
       <x>160</x>
       <y>260</y>
       <width>181</width>
-      <height>71</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -283,9 +283,9 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>340</y>
+      <y>370</y>
       <width>181</width>
-      <height>71</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -311,6 +311,38 @@
       <width>331</width>
       <height>151</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clear_btn">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>320</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>清空</string>
     </property>
    </widget>
   </widget>

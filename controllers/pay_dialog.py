@@ -31,7 +31,7 @@ class PayDialog(QDialog):
 
         self.qrcode_label.setPixmap(qr_pixmap)
         self.barcode_label.setPixmap(bar_pixmap)
-        # self.price_label.setText(f"总金额：{total_price:.2f}￥")
+        self.price_label.setText(f"总金额：{self.total_price:.2f}￥")
 
     def cancel_pay(self):
         self.reject()

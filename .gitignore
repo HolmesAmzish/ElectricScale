@@ -1,6 +1,7 @@
 models/dataset/
 
 *.pth
+*.onnx
 *.h5
 *.jpg
 *.mp4
